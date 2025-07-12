@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
-import Button from '../utils/Button';
+// import Button from '../../utils/Button';
 // import SaveButton from './SaveButton';
 
 const CarsListings = [
@@ -14,7 +14,7 @@ const CarsListings = [
     color: 'White',
     varients: 'Altis Grande',
     carPrice: '42 Lacs',
-    images: require('../assets/images/toyota.jpg'),
+    images: require('../../assets/images/toyota.jpg'),
   },
   {
     _id: '2',
@@ -26,7 +26,7 @@ const CarsListings = [
     color: 'Black',
     varients: 'Turbo RS',
     carPrice: '50 Lacs',
-    images: require('../assets/images/toyota.jpg'),
+    images: require('../../assets/images/toyota.jpg'),
   },
   {
     _id: '3',
@@ -38,7 +38,7 @@ const CarsListings = [
     color: 'Red',
     varients: 'VXL AGS',
     carPrice: '22 Lacs',
-    images: require('../assets/images/toyota.jpg'),
+    images: require('../../assets/images/toyota.jpg'),
   },
   {
     _id: '4',
@@ -50,7 +50,7 @@ const CarsListings = [
     color: 'Blue',
     varients: 'AWD',
     carPrice: '70 Lacs',
-    images: require('../assets/images/toyota.jpg'),
+    images: require('../../assets/images/toyota.jpg'),
   },
   {
     _id: '5',
@@ -62,11 +62,11 @@ const CarsListings = [
     color: 'Silver',
     varients: 'Ultimate',
     carPrice: '65 Lacs',
-    images: require('../assets/images/toyota.jpg'),
+    images: require('../../assets/images/toyota.jpg'),
   },
 ];
 
-const ShowroomsBody = () => {
+const showrooms = () => {
   const [grid, setGrid] = useState(false);
 
   return (
@@ -104,7 +104,12 @@ const ShowroomsBody = () => {
                 <Text style={styles.updatedText}>updated {car.engineCapacity} days</Text>
                 <View style={styles.priceRow}>
                   <Text style={styles.priceText}>{car.carPrice} PKR</Text>
-                  <Button name="More detail" />
+                  <TouchableOpacity
+                    style={styles.detailBtn}
+                    onPress={() => console.log(`More details for ${car.carName}`)}
+                  >
+                    <Text style={styles.detailBtnText}>More Detail</Text>
+                  </TouchableOpacity>
                 </View>
               </View>
             </View>
@@ -159,6 +164,17 @@ const styles = StyleSheet.create({
   list: {
     flexDirection: 'column',
     gap: 8,
+  },
+  detailBtn: {
+    backgroundColor: '#6b451a',
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+  },
+  detailBtnText: {
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: 'bold',
   },
   card: {
     backgroundColor: '#fff',
@@ -246,4 +262,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ShowroomsBody; 
+export default showrooms; 
